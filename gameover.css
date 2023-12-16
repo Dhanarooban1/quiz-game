@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+   
+  #score {
+    
+    font-size: 24px;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/BG\ for\ gameover.gif');
+    background-size: cover;
+    transform: scaleX(-1);
+    z-index: -1;
+    background-attachment: fixed;
+}
+
+  .container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+
+  .gameover {
+    font-family: "Arial Black", sans-serif;
+    font-size: 48px;
+    /* color: white; */
+    text-align: center;
+    color: rgb(73, 0, 0);
+    text-shadow: 2px 2px 4px rgb(255, 238, 238);
+  }
+  
+  .button {
+    letter-spacing: 10;
+    display: block;
+    width: 200px;
+    height: 50px;
+    margin: 50px auto;
+    border: none;
+    border-radius: 10px;
+    font-family: "poppins", sans-serif;
+    font-size: 24px;
+    color: white;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.518), rgb(0, 0, 0));
+    box-shadow: 2px 2px 4px rgb(0, 0, 0);
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    transform: scale(1.1);
+  }
+
+
+ 
