@@ -7,8 +7,7 @@ const  player2 =document.querySelector('.playerss2').value
         alert("Please give a player name")
     }
     else if(player1 && player2){
-        localStorage.setItem('player1', player1)
-        localStorage.setItem('player2', player2)
+       localStorage.setItem('playerName',document.getElementById("nickName").value)
         location.href = 'game.html'
     }
 })

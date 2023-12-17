@@ -1,7 +1,16 @@
+let scoreselement = document.getElementById('score');
+let answer = 0;
+let score = 0;
+let time = 10;
+
+
+
+
+
+
 window.onload = generateNewQuestion 
-
-
 function generateNewQuestion() {
+  time = 10;
   var text = generateTopic();
   var pre = document.querySelector("pre");
   pre.getAttribute("data-text", text);
@@ -14,25 +23,19 @@ function generateNewQuestion() {
       i++;
     } else {
       clearInterval(interval);
+      startTimer()
     }
   }, 50);
 };
 
-// function generateTopic() {
-//   const topics = ["movies", "songs", "books", "countries"]; // Add more topics as needed
-//   const randomIndex = Math.floor(Math.random() * topics.length);
-//   return topics[randomIndex];
-// }
-let scoreselement = document.getElementById('score');
-let answer = 0;
-let score = 0;
-let time = 10;
+
+
 
 let data = [
   {
     name: "What is h20?",
     ans: 0,
-    images: [
+    images: [ 
       "assets/images/que1/water.png",
       "assets/images/que1/iron.png",
       "assets/images/que1/copper.png",
@@ -83,15 +86,21 @@ function generateTopic() {
   answer = topic.ans;
 
   let element = `<div class="answers">
-  <img class="ans1 imageclass" id="0" src=${topic.images[0]} alt="" />
-  <div class="tri-bottom">
-    <img id="1"class="imageclass" src=${topic.images[1]} alt="" />
-    <img id="2" class="imageclass" src=${topic.images[2]} alt="" />
+  <div>
+  <P class="option">OPTION 1:</P>
+  <img class="imageclass" id="0" src=${topic.images[0]} alt=""/>
+  </div>
+  <div>
+  <p class="option" >OPTION 2:</P>
+  <img  id="1"class="imageclass" src=${topic.images[1]} alt="" />
+  </div>
+  <div>
+  <p class="option" >OPTION 3:<p>
+  <img id="2" class="imageclass" src=${topic.images[2]} alt="" />
   </div>
 </div>`;
 
   let container = document.getElementById("container");
-
   container.innerHTML = element;
 
   var imagesdiv = document.querySelectorAll(".imageclass");
@@ -111,13 +120,30 @@ function clickOnImage(e) {
 
   if (answer == e.target.id) {
     console.log("correct answer");
+    time=10
     score++;
     generateNewQuestion()
     scoreselement.innerText=score
   } else {
+    localStorage.setItem('score',score)
     location.href='gameover.html'
     console.log("wrong answer");
     
   }
 }
+
+
+function startTimer(){
+time = 10;
+var timerInterval = setInterval(()=>{
+  if(time==1){
+    localStorage.setItem('score',score)
+    window.location.href = "gameover.html";
+  }
+  time--
+  document.getElementById("timer").innerHTML=time
+}, 1000);
+}
+
+
 
